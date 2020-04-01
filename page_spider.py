@@ -11,7 +11,7 @@ def main(database: str, url_list_file: str):
 
 	for url in urls:
 		print("reading " + url)
-		page_content = url_utilities.load_page(url = url)
+		page_content = url_utilities.load_page(url=url)
 		words = url_utilities.scrape_page(page_contents=page_content)
 		big_word_list.extend(words)
 
@@ -21,6 +21,7 @@ def main(database: str, url_list_file: str):
 	database_utilities.create_database(database_path=path)
 	database_utilities.save_words_to_database(database_path=path, words_list=big_word_list)
 
+
 if __name__ == "__main__":
 	parser = argparse.ArgumentParser()
 	parser.add_argument("-db", "--database", help="SQLite File Name")
@@ -29,4 +30,3 @@ if __name__ == "__main__":
 	database_file = args.database
 	input_file = args.input
 	main(database=database_file, url_list_file=input_file)
-
